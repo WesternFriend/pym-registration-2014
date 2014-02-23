@@ -82,10 +82,11 @@ cj(function($) {
         var age_in_ms = today - birthdate;
         var age_in_years = age_in_ms  / 1000 / 60 / 60 / 24 / 365;
 
-        console.log(age);
+        console.log(age_in_years);
 
         // Should this modify the higher level age variable instead of returning age?
-        return age_in_years;
+        // age = age_in_years
+        // return age_in_years;
     };
 
     var attachEventListeners = function () {

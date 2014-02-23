@@ -41,7 +41,7 @@ cj(function($) {
         "289": "Full week",
         "290": "Daily overnight",
         "291": "Daily commuter"
-    }
+    };
 
     $(document).ready(function() {
         // Hide all form price elements
@@ -63,15 +63,21 @@ cj(function($) {
     
     var showAccommodationsSelection = function () {
         // Code to show a price section
-        if ($("input[name='price_89']:checked").val() === "289") {
-            //Full Week selected
-            console.log("Full week.");
-        } else if ($("input[name='price_89']:checked").val() === "290") {
-            // Specific days (overnight) selected
-            console.log("Overnight.");
-        } else if ($("input[name='price_89']:checked").val() === "291") {
-            // Specific days (commuter) selected
-            console.log("Commuter.");
+        var attender_type = attender_type_map[$("input[name='price_89']:checked").val()];
+
+        // Show fields based on the attender type
+        switch (attender_type) {
+                case "Full week":
+                    console.log("Full week.");
+                    break;
+                case "Daily overnight":
+                    console.log("Daily overnight.");
+                    break;
+                case "Daily commuter":
+                    console.log("Daily commuter.");
+                    break;
+                default:
+                    break;
         }
     };
     var resetAllPriceValues = function () {

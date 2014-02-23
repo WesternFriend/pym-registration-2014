@@ -1,4 +1,12 @@
 cj(function($) {
+    // Determine age thresholds (minimum value to qualify as age demographic)
+    var age_group_map = {
+        "Adult": 25,
+        "Young Friend": 18,
+        "Youth": 12,
+        "Child": 5,
+        "Infant": 0
+    };
     // Declare CSS variables
     var price_inputs = {
         preferred_accommodations: ".Preferred_Accommodations-section",
@@ -34,7 +42,10 @@ cj(function($) {
     };
     
     var input_birthdate = "#birth_date_display";
-    var age; // Placeholder for age calculation(s)
+    var age, // Placeholder for age calculation(s)
+        age_group, // Placeholder for age demographic - "Adult", "Young Friend", "Youth", "Child", "Infant"
+        attender_type, // placeholder for the type of attender "Full week", "Daily overnight", "Daily commuter"
+        preferred_accommodations; // Placeholder for the preferred accommodations - "Semi-private", "Dorm", "Camping", "JYM Area"
 
     // This variable is used to map values from the "Full week or daily" radio select to human-friendly names
     var attender_type_map = {
@@ -63,17 +74,25 @@ cj(function($) {
     
     var showAccommodationsSelection = function () {
         // Code to show a price section
-        var attender_type = attender_type_map[$("input[name='price_89']:checked").val()];
+        attender_type = attender_type_map[$("input[name='price_89']:checked").val()];
 
         // Show fields based on the attender type
         switch (attender_type) {
                 case "Full week":
+                    hideAllPrices();
+                    $(price_inputs.preferred_accommodations).show();
+                    showRelevantPrices();
                     $(price_inputs.total).show();
                     break;
                 case "Daily overnight":
+                    hideAllPrices();
+                    $(price_inputs.preferred_accommodations).show();
+                    showRelevantPrices();
                     $(price_inputs.total).show();
                     break;
                 case "Daily commuter":
+                    hideAllPrices();
+                    showRelevantPrices();
                     $(price_inputs.total).show();
                     break;
                 default:
@@ -104,9 +123,27 @@ cj(function($) {
 
         // Should this modify the higher level age variable instead of returning age?
         age = age_in_years;
+        calculateAgeGroup(age);
         // return age_in_years;
     };
-
+    var calculateAgeGroup = function (age) {
+        // Determine the age group based on established age thresholds.
+        if (age >= age_group_map["Adult"]) {
+            age_group = "Adult";
+        } else if (age >= age_group_map["Young Friend"]) {
+            age_group = "Young Friend";
+        } else if (age >= age_group_map["Youth"]) {
+            age_group = "Youth";
+        } else if (age >= age_group_map["Child"]) {
+            age_group = "Child";
+        } else if (age >= age_group_map["Infant"]) {
+            age_group = "Infant";
+        }
+    };
+    var showRelevantPrices = function (age) {
+        // Show prices based on age group
+        //switch
+    };
     var attachEventListeners = function () {
         // Attach event listeners to all page elements
 

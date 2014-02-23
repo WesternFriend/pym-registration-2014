@@ -1,6 +1,7 @@
 cj(function($) {
     // Declare CSS variables
     var price_inputs = {
+        preferred_accommodations: ".Preferred_Accommodations-section",
         commuter_adult_days: ".Commuter_Adult_Days-section",
         commuter_youth_young_friend_days: ".Commuter_Youth_Young_Friend_Day-section",
         commuter_child_days: ".Commuter_Child_Days-section",
@@ -15,12 +16,10 @@ cj(function($) {
         overnight_young_friend_daily_camping: ".Overnight_Young_Friend_Daily_Ca-section",
         overnight_young_friend_daily_yf_area: ".Overnight_Young_Friend_Daily_YF-section",
         overnight_youth_full_week: ".Overnight_Youth_Full_Week-section",
-        overnight_youth_daily_dorm_qty: ".Overnight_Youth_Daily_Dorm_Qty-section",
-        overnight_youth_daily_dorm_days: ".Overnight_Youth_Daily_Dorm_Days-section",
+        overnight_youth_daily_dorm: ".Overnight_Youth_Daily_Dorm_Qty-section, .Overnight_Youth_Daily_Dorm_Days-section",
         overnight_youth_daily_semi_private: ".Overnight_Youth_Daily_Semi_priv-section",
-        overnight_youth_daily_camping_qty: ".Overnight_Youth_Daily_Camping_Q-section",
-        overnight_youth_daily_camping_days: ".Overnight_Youth_Daily_Camping_D-section",
-        overnight_youth_daily_jym_area: ".Overnight_Youth_Daily_JYM_area_-section",
+        overnight_youth_daily_camping: ".Overnight_Youth_Daily_Camping_Q-section, .Overnight_Youth_Daily_Camping_D-section",
+        overnight_youth_daily_jym_area: ".Overnight_Youth_Daily_JYM_area_-section", // Need to be able to select this value based on age
         overnight_child_full_week: ".Overnight_Child_Full_Week-section",
         overnight_child_daily_dorm_qty: ".Overnight_Child_Daily_Dorm_Qty-section",
         overnight_child_daily_dorm_days: ".Overnight_Child_Daily_Dorm_Days-section",
@@ -55,7 +54,7 @@ cj(function($) {
         }
     };
     
-    var showPriceSection = function (sectionVariable) {
+    var showAccommodationsSelection = function () {
         // Code to show a price section
     };
     var resetAllPriceValues = function () {
@@ -80,10 +79,8 @@ cj(function($) {
         var age_in_ms = today - birthdate;
         var age_in_years = age_in_ms  / 1000 / 60 / 60 / 24 / 365;
 
-        console.log(age_in_years);
-
         // Should this modify the higher level age variable instead of returning age?
-        // age = age_in_years
+        age = age_in_years;
         // return age_in_years;
     };
 
@@ -92,5 +89,8 @@ cj(function($) {
 
         // Birth Date input event listener(s)
         $(input_birthdate).change(calculateAge);
+
+        // Show accommodations fields
+        $("input[name='price_89']").change(showAccommodationsSelection);
     };
 }) (jQuery);

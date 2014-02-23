@@ -36,6 +36,13 @@ cj(function($) {
     var input_birthdate = "#birth_date_display";
     var age; // Placeholder for age calculation(s)
 
+    // This variable is used to map values from the "Full week or daily" radio select to human-friendly names
+    var attender_type_map = {
+        "289": "Full week",
+        "290": "Daily overnight",
+        "291": "Daily commuter"
+    }
+
     $(document).ready(function() {
         // Hide all form price elements
         hideAllPrices();
@@ -56,6 +63,16 @@ cj(function($) {
     
     var showAccommodationsSelection = function () {
         // Code to show a price section
+        if ($("input[name='price_89']:checked").val() === "289") {
+            //Full Week selected
+            console.log("Full week.");
+        } else if ($("input[name='price_89']:checked").val() === "290") {
+            // Specific days (overnight) selected
+            console.log("Overnight.");
+        } else if ($("input[name='price_89']:checked").val() === "291") {
+            // Specific days (commuter) selected
+            console.log("Commuter.");
+        }
     };
     var resetAllPriceValues = function () {
         // reset all price values. e.g. triggered when form accommodations change.

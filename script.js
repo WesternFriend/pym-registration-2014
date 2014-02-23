@@ -52,6 +52,10 @@ cj(function($) {
         // reset all price values. e.g. triggered when form accommodations change.
     };
     
+    var calculateAge = function (birthday, today) {
+        // Calculate age in years
+    };
+
     var attachEventListeners = function () {
         // Attach event listeners to all page elements
     };

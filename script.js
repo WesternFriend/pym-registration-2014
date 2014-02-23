@@ -1,6 +1,6 @@
 cj(function($) {
     // Declare CSS variables
-        var prices = {
+    var price_inputs = {
             commuter_adult_days: ".Commuter_Adult_Days-section",
             commuter_youth_young_friend_days: ".Commuter_Youth_Young_Friend_Day-section",
             commuter_child_days: ".Commuter_Child_Days-section",
@@ -33,7 +33,7 @@ cj(function($) {
             overnight_infant_to_five_daily_semi_private: ".Overnight_Infant_to_5_Daily_Sem-section",
             overnight_infant_to_five_daily_camping: ".Overnight_Infant_to_5_Daily_Cam-section",
             overnight_optional_add_ons: ".Overnight_Optional_add_ons-section"
-        }
+    };
     
     var input_birthdate = "#birth_date_display";
     var age; // Placeholder for age calculation(s)
@@ -51,6 +51,9 @@ cj(function($) {
     
     var hideAllPrices = function () {
         // Code to hide all price sections
+        for (var price_input in price_inputs) {
+            $(price_inputs[price_input]).hide();
+        }
     };
     
     var showPriceSection = function (sectionVariable) {
@@ -79,6 +82,8 @@ cj(function($) {
         var age_in_years = age_in_ms  / 1000 / 60 / 60 / 24 / 365;
 
         console.log(age);
+
+        // Should this modify the higher level age variable instead of returning age?
         return age_in_years;
     };
 

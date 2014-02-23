@@ -54,6 +54,10 @@ cj(function($) {
     
     var calculateAge = function (birthday, today) {
         // Calculate age in years
+        var age;
+
+
+        return age;
     };
 
     var attachEventListeners = function () {

@@ -33,6 +33,8 @@ cj(function($) {
             overnight_infant_to_five_daily_camping = ".Overnight_Infant_to_5_Daily_Cam-section",
             overnight_optional_add_ons = ".Overnight_Optional_add_ons-section";
     
+    var input_birthdate = "#birth_date_display";
+
     $(document).ready(function() {
         // Hide all form price elements
         hideAllPrices();

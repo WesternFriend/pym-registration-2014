@@ -30,7 +30,7 @@ cj(function($) {
         overnight_infant_to_five_daily_semi_private: ".Overnight_Infant_to_5_Daily_Sem-section",
         overnight_infant_to_five_daily_camping: ".Overnight_Infant_to_5_Daily_Cam-section",
         overnight_optional_add_ons: ".Overnight_Optional_add_ons-section",
-        prices_total: "#pricesetTotal"
+        total: "#pricesetTotal"
     };
     
     var input_birthdate = "#birth_date_display";
@@ -68,13 +68,13 @@ cj(function($) {
         // Show fields based on the attender type
         switch (attender_type) {
                 case "Full week":
-                    console.log("Full week.");
+                    $(price_inputs.total).show();
                     break;
                 case "Daily overnight":
-                    console.log("Daily overnight.");
+                    $(price_inputs.total).show();
                     break;
                 case "Daily commuter":
-                    console.log("Daily commuter.");
+                    $(price_inputs.total).show();
                     break;
                 default:
                     break;
